@@ -7,4 +7,6 @@
 .items {
     align-items: center;
     background-color: rgb(254, 247, 233);
+    padding-left: 20px;
+    width: 40%;
 }
