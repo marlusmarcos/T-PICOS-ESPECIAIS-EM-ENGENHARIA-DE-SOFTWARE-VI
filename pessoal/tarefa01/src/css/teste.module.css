@@ -12,19 +12,38 @@
     padding: auto;
     padding-left: 2rem;
     padding-right: 5rem;
-    width: 48%;
+    width: auto;
     margin-top: 100px;
     margin-left: 4rem;
+    margin-bottom: auto;
+    
     
     
 }
 
+.item {
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.informacao {
+    display: flex;
+}
+
+
 .resumo {
-    align-items: flex-start;
     background-color: rgb(164, 129, 251);
     padding-left: 2rem;
     padding-right: 5rem;
-    width: 48%;
+    width: auto;
     margin-top: 100px;
+    margin-right: 100px;
+    border-radius: 25px;
+    margin-bottom: auto;
+    
    
+}
+
+hr {
+    margin: 40px 0;
 }

@@ -2,15 +2,18 @@ import  { useState } from 'react';
 import Item, {type ItemInterface} from './Item';
 import Total from './Total';
 import styles from '../css/teste.module.css';
+import Resumo from './Resumo'; 
 
 
 function Topo () {
 
     const [count, setCount] = useState(0);
+    const [valor, setValor] = useState (0);
 
 
-    function incrementCount () {
+    function incrementCount (v: number) {
         setCount (count+1)
+        setValor (v)
     }
     function decrementCount  (value: number)  {
 
@@ -34,14 +37,13 @@ function Topo () {
                     Carrinho de compras
                 </p>
                 <Total total={count}/>
-                <Item nome={"pizza" } descricao={"pizza com cabalbresa e Mussarela"} preco={51.5} incrementCount={incrementCount} decrementCount = { decrementCount}/>
+                <hr />
+                <Item nome={"pizza" } descricao={"pizza com cabalbresa e Mussarela"} preco={30} incrementCount={incrementCount} decrementCount = { decrementCount}/>
                 <Item nome={"pizza" } descricao={"pizza frango com catupry"} preco={51.5} incrementCount={incrementCount} decrementCount = { decrementCount}/>
-                <Item nome={"pizza" } descricao={"pizza 4 queijos"} preco={51.5} incrementCount={incrementCount} decrementCount = { decrementCount}/>
-                <Item nome={"pizza" } descricao={"pizza portuguesa"} preco={51.5} incrementCount={incrementCount} decrementCount = { decrementCount}/>      
+                <Item nome={"pizza" } descricao={"pizza 4 queijos"} preco={10.5} incrementCount={incrementCount} decrementCount = { decrementCount}/>
+                <Item nome={"pizza" } descricao={"pizza portuguesa"} preco={20} incrementCount={incrementCount} decrementCount = { decrementCount}/>      
             </div>
-            <div className={styles.resumo}>
-                <p>Resumo</p>
-            </div>
+            <Resumo qtd_items={count} total_valor={valor} />
 
         </div>
         

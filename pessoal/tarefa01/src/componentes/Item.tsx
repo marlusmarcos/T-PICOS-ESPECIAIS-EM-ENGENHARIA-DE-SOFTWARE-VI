@@ -1,5 +1,5 @@
 import { ReactEventHandler, useState } from "react";
-
+import styles from '../css/teste.module.css';
 export type ItemInterface = {
     nome: string
     descricao: string
@@ -10,12 +10,14 @@ export type ItemInterface = {
 
 function Item ({nome, descricao, preco, incrementCount, decrementCount}: ItemInterface) {
 
-    const [total, setTotal] = useState(0);
+    const [total, setTotal] = useState(1);
+    const [precoUnico, setPrecounico] = useState(preco); 
     const [aux, setAux] = useState(1);
 
     function incrementTotal () {
         setTotal (total+1)
-        incrementCount(null)
+        setPrecounico (precoUnico+preco)
+        incrementCount(precoUnico)
     }
     function decrementTotal  (v: number)  {
 
@@ -23,9 +25,11 @@ function Item ({nome, descricao, preco, incrementCount, decrementCount}: ItemInt
             else {
                 if (v == 1) {
                     setTotal (total-1)
+                    setPrecounico (preco)
                     decrementCount(1)
                 } else {
                     setTotal (0)
+                    setPrecounico (preco)
                     decrementCount(v)
                 }
                 
@@ -36,7 +40,8 @@ function Item ({nome, descricao, preco, incrementCount, decrementCount}: ItemInt
 
     return (
         <>
-        <div>
+        <div className={styles.item}>
+        <div className={styles.informacao}>
             <h1>
                 {nome}
             </h1>
@@ -44,16 +49,17 @@ function Item ({nome, descricao, preco, incrementCount, decrementCount}: ItemInt
                 {descricao}
             </h2>
             <h2>
-                {preco}
+                {precoUnico}
             </h2>
             <h3>{total}</h3>
         </div>
         <div>
             <button onClick={incrementTotal} > Aumentar</button>
             <button onClick={() => decrementTotal(1)}> Diminuir</button>
-            <button onClick={() =>decrementTotal(total)}> Excluir</button>
+            <button onClick={() =>decrementTotal(total-1)}> Excluir</button>
         </div>
-        
+        </div>
+        <hr />
         </>
     )
 }
