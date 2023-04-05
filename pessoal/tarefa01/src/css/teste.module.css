@@ -1,7 +1,5 @@
 .topo {
     color: rgb(11, 11, 11);
-    font-family:Georgia, 'Times New Roman', Times, serif ;
-
 }
 .container {
     background-color: rgb(228, 253, 253);
@@ -16,8 +14,8 @@
     margin-top: 100px;
     margin-left: 4rem;
     margin-bottom: auto;
-    
-    
+    font-family: 'Roboto';
+    font-weight: 400;
     
 }
 
@@ -27,12 +25,12 @@
 }
 
 .informacao {
-    display: flex;
+    
 }
 
 
 .resumo {
-    background-color: rgb(164, 129, 251);
+    background-color: rgb(144, 103, 248);
     padding-left: 2rem;
     padding-right: 5rem;
     width: auto;
@@ -40,10 +38,15 @@
     margin-right: 100px;
     border-radius: 25px;
     margin-bottom: auto;
-    
    
 }
 
 hr {
     margin: 40px 0;
+}
+p {
+    font-weight: 200;
+}
+.pResumo {
+    color: white;
 }

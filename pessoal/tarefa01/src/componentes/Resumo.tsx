@@ -21,7 +21,7 @@ function Resumo ({qtd_items, total_valor}: ResumoInterface) {
     return (
         <div className={styles.resumo}>
             <div>
-                <p >
+                <p className={styles.pResumo}>
                     Resumo
                 </p>
             <hr />

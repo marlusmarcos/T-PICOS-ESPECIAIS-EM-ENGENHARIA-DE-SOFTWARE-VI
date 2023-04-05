@@ -1,4 +1,4 @@
-import { ReactEventHandler, useState } from "react";
+import { ReactEventHandler, useState, createContext, useContext } from "react";
 import styles from '../css/teste.module.css';
 export type ItemInterface = {
     nome: string
@@ -10,9 +10,11 @@ export type ItemInterface = {
 
 function Item ({nome, descricao, preco, incrementCount, decrementCount}: ItemInterface) {
 
+    const Context = createContext(0);
     const [total, setTotal] = useState(1);
     const [precoUnico, setPrecounico] = useState(preco); 
     const [aux, setAux] = useState(1);
+    
 
     function incrementTotal () {
         setTotal (total+1)
@@ -42,15 +44,17 @@ function Item ({nome, descricao, preco, incrementCount, decrementCount}: ItemInt
         <>
         <div className={styles.item}>
         <div className={styles.informacao}>
-            <h1>
+            <p>
+                <strong>
                 {nome}
-            </h1>
-            <h2>
+                </strong>
+            </p>
+            <p>
                 {descricao}
-            </h2>
-            <h2>
+            </p>
+            <p>
                 {precoUnico}
-            </h2>
+            </p>
             <h3>{total}</h3>
         </div>
         <div>
