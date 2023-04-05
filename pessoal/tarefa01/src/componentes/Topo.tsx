@@ -4,6 +4,10 @@ import Total from './Total';
 import styles from '../css/teste.module.css';
 import Resumo from './Resumo'; 
 
+export type TopoInterface = {
+    _count : number
+    _valor:  number
+}
 
 function Topo () {
 
@@ -33,9 +37,9 @@ function Topo () {
         
         <div className={styles.container}>
             <div  className={styles.items}>
-                <p className={styles.topo}>
-                    Carrinho de compras
-                </p>
+                <h3 className={styles.topo}>
+                    <strong>Carrinho de compras</strong> 
+                </h3>
                 <Total total={count}/>
                 <hr />
                 <Item nome={"pizza" } descricao={"pizza com cabalbresa e Mussarela"} preco={30} incrementCount={incrementCount} decrementCount = { decrementCount}/>

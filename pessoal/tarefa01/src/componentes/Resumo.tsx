@@ -22,11 +22,11 @@ function Resumo ({qtd_items, total_valor}: ResumoInterface) {
         <div className={styles.resumo}>
             <div>
                 <p className={styles.pResumo}>
-                    Resumo
+                    <strong>Resumo</strong> 
                 </p>
             <hr />
             </div>
-            <div>
+            <div className={styles.pResumo}>
                 <p>Items: ({qtd_items})</p>
                 <p>Frete: $44</p>
                 <hr />

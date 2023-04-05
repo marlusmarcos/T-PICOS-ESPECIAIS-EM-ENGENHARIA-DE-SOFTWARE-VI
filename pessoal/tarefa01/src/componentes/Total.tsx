@@ -9,7 +9,7 @@ function Total ({total}: TotalProps) {
 
     return(
         <>
-        <h3>você tem {total} itens</h3>
+        <h4>você tem {total} itens</h4>
         </>
     )
 }
