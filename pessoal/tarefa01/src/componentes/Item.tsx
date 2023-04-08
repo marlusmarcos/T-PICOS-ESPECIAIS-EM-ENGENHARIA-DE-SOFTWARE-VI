@@ -1,6 +1,9 @@
 import { ReactEventHandler, useState, createContext, useContext } from "react";
 import styles from '../css/teste.module.css';
+import TotalPagar from "./TotalPagar";
+
 export type ItemInterface = {
+    urlItem: string
     nome: string
     descricao: string
     preco: number
@@ -8,9 +11,9 @@ export type ItemInterface = {
     decrementCount: (params: any) => void; 
 }
 
-function Item ({nome, descricao, preco, incrementCount, decrementCount}: ItemInterface) {
+function Item ({urlItem, nome, descricao, preco, incrementCount, decrementCount}: ItemInterface) {
 
-    const Context = createContext(0);
+
     const [total, setTotal] = useState(1);
     const [precoUnico, setPrecounico] = useState(preco); 
     const [aux, setAux] = useState(1);
@@ -38,11 +41,10 @@ function Item ({nome, descricao, preco, incrementCount, decrementCount}: ItemInt
             }
     }
 
-
-
     return (
         <>
         <div className={styles.item}>
+        <img src= {urlItem} className={styles.imagem}/>
         <div className={styles.informacao}>
             <p>
                 <strong>
@@ -55,11 +57,14 @@ function Item ({nome, descricao, preco, incrementCount, decrementCount}: ItemInt
             <p>
                 {precoUnico}
             </p>
+        </div>
+        <div className={styles.elementos}>
             <h3>{total}</h3>
         </div>
-        <div>
-            <button onClick={incrementTotal} > Aumentar</button>
-            <button onClick={() => decrementTotal(1)}> Diminuir</button>
+        <TotalPagar quantidade={total} preco={preco} />
+        <div className={styles.elementosButton}>
+            <button onClick={incrementTotal} > +</button>
+            <button onClick={() => decrementTotal(1)}> -</button>
             <button onClick={() =>decrementTotal(total-1)}> Excluir</button>
         </div>
         </div>

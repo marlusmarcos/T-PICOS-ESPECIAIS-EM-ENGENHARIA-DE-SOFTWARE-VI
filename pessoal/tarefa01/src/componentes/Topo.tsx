@@ -13,7 +13,12 @@ function Topo () {
 
     const [count, setCount] = useState(0);
     const [valor, setValor] = useState (0);
-
+    const data = [
+        { id: 1, urlItem: '../public/assets/pizza.jpg', nome: 'pizza', descricao: 'Queijo, tomate, cebola, calabresa com molho branco', preco: 50 },
+        { id: 2, urlItem: '../public/assets/churrasco.jpg',nome: 'churrasco',  descricao: 'carne de sol acebolada', preco: 20 },
+        { id: 3, urlItem: '../public/assets/hotdog.jpg',nome: 'Hot-dog', descricao: 'milho, ervilha, recheio de frango ', preco: 5 },
+        { id: 4, urlItem: '../public/assets/coca.jpg',nome: 'Rerigerante', descricao: 'coca cola', preco: 8 }
+    ];
 
     function incrementCount (v: number) {
         setCount (count+1)
@@ -42,11 +47,13 @@ function Topo () {
                 </h3>
                 <Total total={count}/>
                 <hr />
-                <Item nome={"pizza" } descricao={"pizza com cabalbresa e Mussarela"} preco={30} incrementCount={incrementCount} decrementCount = { decrementCount}/>
-                <Item nome={"pizza" } descricao={"pizza frango com catupry"} preco={51.5} incrementCount={incrementCount} decrementCount = { decrementCount}/>
-                <Item nome={"pizza" } descricao={"pizza 4 queijos"} preco={10.5} incrementCount={incrementCount} decrementCount = { decrementCount}/>
-                <Item nome={"pizza" } descricao={"pizza portuguesa"} preco={20} incrementCount={incrementCount} decrementCount = { decrementCount}/>      
-            </div>
+                {data.map((item, index) => (
+                    <Item urlItem={item.urlItem} nome={item.nome} descricao={item.descricao} preco={item.preco} incrementCount={incrementCount} decrementCount={decrementCount} />
+                )
+                )
+                
+                }
+                </div>
             <Resumo qtd_items={count} total_valor={valor} />
 
         </div>
@@ -56,6 +63,5 @@ function Topo () {
     )
 
 }
-
 
 export default Topo

@@ -1,5 +1,7 @@
 import  { useState } from 'react';
 import styles from '../css/teste.module.css';
+import { useContext } from 'react';
+import { TotalContext } from '../context/TotalContext';
 
 export type ResumoInterface = {
     qtd_items: number
@@ -12,6 +14,7 @@ function Resumo ({qtd_items, total_valor}: ResumoInterface) {
 
     const [frete, setFrete] = useState (30)
     const [total, setTotal] = useState (0);
+    const valorTotal = useContext(TotalContext);
 
     function handleTotal () {
         setTotal(total + total_valor)
@@ -30,7 +33,7 @@ function Resumo ({qtd_items, total_valor}: ResumoInterface) {
                 <p>Items: ({qtd_items})</p>
                 <p>Frete: $44</p>
                 <hr />
-                <p>Total: {total_valor}</p>
+                <p>Total: {total} </p>
             </div>
             
         </div>
