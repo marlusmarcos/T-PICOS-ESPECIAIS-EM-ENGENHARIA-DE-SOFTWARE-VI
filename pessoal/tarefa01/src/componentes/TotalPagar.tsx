@@ -10,9 +10,9 @@ function TotalPagar ({quantidade, preco}: TotalPagar) {
     const [valor, setValor] = useState (quantidade*preco);
     return (
         <div className={styles.elementos}>
-            <h3>
-                {valor}
-            </h3>
+            <p>
+            R$ {valor}
+            </p>
         </div>
     )
 
