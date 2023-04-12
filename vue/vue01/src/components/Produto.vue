@@ -1,8 +1,12 @@
 <template>
     <h1>Lista com {{ quantidade }} produtos</h1>
-    <ul>
+
+    <ul v-if="produtos != null">
         <li v-for="produto of produtos">Nome: {{ produto.nome }} Descrição: {{ produto.descricao }} preço: {{ produto.preco }}</li>
     </ul>
+    <p v-else>
+        Não tem produtos
+    </p>
 
 </template>
 
@@ -26,4 +30,5 @@
           preco: 10
        }
     ]
+    
 </script>
