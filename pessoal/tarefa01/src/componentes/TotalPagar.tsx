@@ -3,15 +3,16 @@ import styles from '../css/teste.module.css';
 export type TotalPagar = {
     quantidade: number
     preco: number;
+    total: number
 }
 
 
-function TotalPagar ({quantidade, preco}: TotalPagar) {
+function TotalPagar ({quantidade, preco, total}: TotalPagar) {
     const [valor, setValor] = useState (quantidade*preco);
     return (
         <div className={styles.elementos}>
             <p>
-            R$ {valor}
+            R$ {total}
             </p>
         </div>
     )

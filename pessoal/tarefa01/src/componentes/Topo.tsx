@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import  { useEffect, useState } from 'react';
 import Item, {type ItemInterface} from './Item';
 import Total from './Total';
 import styles from '../css/teste.module.css';
@@ -8,17 +8,29 @@ export type TopoInterface = {
     _count : number
     _valor:  number
 }
+interface Produto  {
+    id: number,
+    urlItem: string,
+    nome: string;
+    descricao: string
+    preco: number;
+  }
 
 function Topo () {
 
-    const [count, setCount] = useState(0);
+    
     const [valor, setValor] = useState (0);
-    const data = [
-        { id: 1, urlItem: '../public/assets/pizza.jpg', nome: 'pizza', descricao: 'Queijo, tomate, cebola, calabresa com molho branco', preco: 50 },
+    const [produtos, setProdutos] = useState<Produto[]>([]);
+    useEffect(() => {
+        setProdutos([
+                 { id: 1, urlItem: '../public/assets/pizza.jpg', nome: 'pizza', descricao: 'Queijo, tomate, cebola, calabresa com molho branco', preco: 50 },
         { id: 2, urlItem: '../public/assets/churrasco.jpg',nome: 'churrasco',  descricao: 'carne de sol acebolada', preco: 20 },
         { id: 3, urlItem: '../public/assets/hotdog.jpg',nome: 'Hot-dog', descricao: 'milho, ervilha, recheio de frango ', preco: 5 },
         { id: 4, urlItem: '../public/assets/coca.jpg',nome: 'Rerigerante', descricao: 'coca cola', preco: 8 }
-    ];
+        ]);
+      }, []);
+
+    const [count, setCount] = useState(produtos.length);
 
     function incrementCount (v: number) {
         setCount (count+1)
@@ -38,6 +50,7 @@ function Topo () {
     }
 
 
+
     return (
         
         <div className={styles.container}>
@@ -47,8 +60,8 @@ function Topo () {
                 </h3>
                 <Total total={count}/>
                 <hr />
-                {data.map((item, index) => (
-                    <Item urlItem={item.urlItem} nome={item.nome} descricao={item.descricao} preco={item.preco} incrementCount={incrementCount} decrementCount={decrementCount} />
+                {produtos.map((item, index) => (
+                    <Item id={item.id} urlItem={item.urlItem} nome={item.nome} descricao={item.descricao} preco={item.preco} incrementCount={incrementCount} decrementCount={decrementCount} />
                 )
                 )
                 

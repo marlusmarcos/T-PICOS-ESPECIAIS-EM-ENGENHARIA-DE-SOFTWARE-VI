@@ -3,6 +3,7 @@ import styles from '../css/teste.module.css';
 import TotalPagar from "./TotalPagar";
 
 export type ItemInterface = {
+    id: number,
     urlItem: string
     nome: string
     descricao: string
@@ -11,7 +12,7 @@ export type ItemInterface = {
     decrementCount: (params: any) => void; 
 }
 
-function Item ({urlItem, nome, descricao, preco, incrementCount, decrementCount}: ItemInterface) {
+function Item ({id, urlItem, nome, descricao, preco, incrementCount, decrementCount}: ItemInterface) {
 
 
     const [total, setTotal] = useState(1);
@@ -35,6 +36,7 @@ function Item ({urlItem, nome, descricao, preco, incrementCount, decrementCount}
                 } else {
                     setTotal (0)
                     setPrecounico (preco)
+                    
                     decrementCount(v)
                 }
                 
@@ -55,13 +57,13 @@ function Item ({urlItem, nome, descricao, preco, incrementCount, decrementCount}
                 {descricao}
             </p>
             <p>
-                {precoUnico}
+                {preco}
             </p>
         </div>
         <div className={styles.elementos}>
             <h3>{total}</h3>
         </div>
-        <TotalPagar quantidade={total} preco={preco} />
+        <TotalPagar total={precoUnico} quantidade={total} preco={preco} />
         <div className={styles.elementosButton}>
             <button onClick={incrementTotal} > +</button>
             <button onClick={() => decrementTotal(1)}> -</button>
