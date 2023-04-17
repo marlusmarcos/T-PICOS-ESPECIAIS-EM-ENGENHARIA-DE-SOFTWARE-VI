@@ -8,7 +8,7 @@ export type TopoInterface = {
     _count : number
     _valor:  number
 }
-interface Produto  {
+type Produto = {
     id: number,
     urlItem: string,
     nome: string;
@@ -21,16 +21,17 @@ function Topo () {
     
     const [valor, setValor] = useState (0);
     const [produtos, setProdutos] = useState<Produto[]>([]);
+    const [count, setCount] = useState(0);
     useEffect(() => {
         setProdutos([
-                 { id: 1, urlItem: '../public/assets/pizza.jpg', nome: 'pizza', descricao: 'Queijo, tomate, cebola, calabresa com molho branco', preco: 50 },
+        { id: 1, urlItem: '../public/assets/pizza.jpg', nome: 'pizza', descricao: 'Queijo, tomate, cebola, calabresa com molho branco', preco: 50 },
         { id: 2, urlItem: '../public/assets/churrasco.jpg',nome: 'churrasco',  descricao: 'carne de sol acebolada', preco: 20 },
         { id: 3, urlItem: '../public/assets/hotdog.jpg',nome: 'Hot-dog', descricao: 'milho, ervilha, recheio de frango ', preco: 5 },
         { id: 4, urlItem: '../public/assets/coca.jpg',nome: 'Rerigerante', descricao: 'coca cola', preco: 8 }
         ]);
-      }, []);
+      }, [setCount(produtos.length)]);
 
-    const [count, setCount] = useState(produtos.length);
+    
 
     function incrementCount (v: number) {
         setCount (count+1)
